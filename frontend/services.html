@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services | EcoPickup</title>
+    <meta
+      name="description"
+      content="Explore EcoPickup's smart waste management services including home pickup, community reporting, and recycling drives."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./hero.css" />
+    <style>
+      .services-hero {
+        background: var(--surface-soft);
+        padding: 140px 0 60px;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+      }
+      .services-grid-page {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin: 60px 0;
+      }
+      .service-card-lg {
+        background: var(--surface);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--border);
+      }
+      .service-card-lg:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-md);
+      }
+      .service-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .service-body {
+        padding: 30px;
+      }
+      .service-body h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--text);
+      }
+      .service-body p {
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="cinematic-header" id="cinematic-header">
+      <nav class="cinematic-nav">
+        <a class="cinematic-logo" href="/" aria-label="EcoPickup home">
+          EcoPickup<sup>®</sup>
+        </a>
+
+        <button
+          class="cinematic-nav-toggle"
+          id="cinematic-nav-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="cinematic-nav-menu" id="cinematic-nav-menu">
+          <a href="/" class="cinematic-nav-link">Home</a>
+          <a href="/services.html" class="cinematic-nav-link active">Services</a>
+          <a href="/about.html" class="cinematic-nav-link">About</a>
+          <a href="/#track" class="cinematic-nav-link">Track</a>
+          <a href="./login.html" class="cinematic-nav-link">Login</a>
+          <a href="./login.html#signup-form" class="cinematic-cta-btn">Begin Journey</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="services-hero">
+        <div class="container reveal">
+          <h1 style="font-size: 3rem; margin-bottom: 20px;">Our Services</h1>
+          <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto;">
+            From residential waste pickup to industrial recycling, we provide comprehensive solutions to keep our communities clean.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="services-grid-page reveal">
+            
+            <article class="service-card-lg">
+              <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=600&q=80" alt="Home Waste Pickup" class="service-img">
+              <div class="service-body">
+                <h3>Home Waste Pickup</h3>
+                <p>Schedule convenient, on-demand doorstep collection for your regular household waste. Our automated routing system ensures the nearest available worker responds to your request.</p>
+                <a href="/login.html" class="primary-button" style="width: 100%; text-align: center; display: block;">Book a Pickup</a>
+              </div>
+            </article>
+
+            <article class="service-card-lg">
+              <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&fit=crop&w=600&q=80" alt="Report Garbage" class="service-img">
+              <div class="service-body">
+                <h3>Report Public Dumping</h3>
+                <p>Notice an unattended garbage spot in your neighborhood? Snap a photo, drop a location pin, and alert the municipal teams instantly to keep public spaces sanitary.</p>
+                <a href="/login.html" class="primary-button" style="width: 100%; text-align: center; display: block;">Report an Issue</a>
+              </div>
+            </article>
+
+            <article class="service-card-lg">
+              <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Recycling Programs" class="service-img">
+              <div class="service-body">
+                <h3>Recycling Programs</h3>
+                <p>Join specialized recycling drives for electronic waste, plastics, and glass. Ensure your waste is sorted properly and enters the circular economy.</p>
+                <a href="/login.html" class="primary-button" style="width: 100%; text-align: center; display: block;">Learn More</a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="logo footer-logo" href="/">
+            <span class="logo-mark">E</span>
+            <span>EcoPickup</span>
+          </a>
+          <p>A smart waste management system for cleaner cities.</p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <a href="/services.html">Services</a>
+          <a href="/#track">Track Request</a>
+          <a href="/about.html">About</a>
+        </div>
+        <div>
+          <h3>Contact Info</h3>
+          <p>Email: support@ecopickup.com</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script>
+      // Dark Mode Toggle Logic
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (themeToggleBtn) themeToggleBtn.innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+      }
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          let theme = document.documentElement.getAttribute('data-theme');
+          if (theme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            themeToggleBtn.innerText = '🌙';
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeToggleBtn.innerText = '☀️';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | EcoPickup</title>
+  <meta name="description" content="EcoPickup admin command center." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/dashboard.css" />
+</head>
+<body data-role="admin" data-layout="sidebar">
+  <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <a class="sidebar-brand" href="/">
+        <span class="sidebar-brand-mark">E</span>
+        <div><strong>EcoPickup</strong><div class="sidebar-role-badge">Admin</div></div>
+      </a>
+      <nav class="sidebar-nav">
+        <a href="/dashboard/admin/" class="active"><span class="nav-icon">📊</span> Dashboard</a>
+        <a href="/admin/requests/"><span class="nav-icon">📋</span> Requests</a>
+        <a href="/admin/workers/"><span class="nav-icon">👷</span> Workers</a>
+        <a href="/admin/users/"><span class="nav-icon">👥</span> Users</a>
+        <div class="sidebar-divider"></div>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="dark-mode-toggle" id="dark-mode-toggle"><span class="nav-icon" id="dark-mode-icon">🌙</span><span id="dark-mode-label">Dark Mode</span></button>
+        <button class="dark-mode-toggle" id="dashboard-logout"><span class="nav-icon">🚪</span> Logout</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <div class="breadcrumbs">
+        <a href="/dashboard/admin/">Admin</a><span class="sep">›</span><span>Dashboard</span>
+      </div>
+
+      <header class="dashboard-topbar">
+        <div class="topbar-copy">
+          <p>Welcome back, <strong id="dashboard-user-name">Admin</strong></p>
+          <h1>Command Center</h1>
+        </div>
+        <div class="topbar-meta">
+          <div class="topbar-chip"><span id="dashboard-user-role">admin</span><strong id="dashboard-date"></strong></div>
+        </div>
+      </header>
+
+      <!-- Row 1: Request stats -->
+      <section class="dashboard-section stats-row">
+        <div class="stat-card">
+          <div class="stat-icon purple">📦</div>
+          <div class="stat-info">
+            <div class="stat-label">Total Requests</div>
+            <div class="stat-value" id="admin-total-requests-count">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">⏳</div>
+          <div class="stat-info">
+            <div class="stat-label">Pending</div>
+            <div class="stat-value" id="admin-pending-requests-count">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">🚛</div>
+          <div class="stat-info">
+            <div class="stat-label">In Progress</div>
+            <div class="stat-value" id="admin-in-progress-requests-count">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">✅</div>
+          <div class="stat-info">
+            <div class="stat-label">Completed</div>
+            <div class="stat-value" id="admin-completed-requests-count">0</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Row 2: People + cancelled -->
+      <section class="dashboard-section stats-row">
+        <div class="stat-card">
+          <div class="stat-icon blue">👥</div>
+          <div class="stat-info">
+            <div class="stat-label">Users</div>
+            <div class="stat-value" id="admin-total-users-count">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple">👷</div>
+          <div class="stat-info">
+            <div class="stat-label">Workers</div>
+            <div class="stat-value" id="admin-total-workers-count">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">🟢</div>
+          <div class="stat-info">
+            <div class="stat-label">Available</div>
+            <div class="stat-value" id="admin-available-workers-count">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">🚫</div>
+          <div class="stat-info">
+            <div class="stat-label">Cancelled</div>
+            <div class="stat-value" id="admin-cancelled-requests-count">0</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Workers table + Quick add -->
+      <section class="dashboard-section content-grid">
+        <article class="card">
+          <div class="card-header">
+            <h3>Active Workers</h3>
+            <a href="/admin/workers/" class="card-link">View All →</a>
+          </div>
+          <div class="table-wrapper">
+            <table class="table-shell">
+              <thead><tr><th>Worker</th><th>Status</th><th>Tasks</th><th>Done</th></tr></thead>
+              <tbody id="admin-workers-table-body"><tr><td colspan="4">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header"><h3>Quick Add Worker</h3></div>
+          <form id="create-worker-form" class="dashboard-form">
+            <div><label for="worker-name">Name</label><input type="text" id="worker-name" required placeholder="Full name"></div>
+            <div><label for="worker-email">Email</label><input type="email" id="worker-email" required placeholder="email@company.com"></div>
+            <div><label for="worker-password">Password</label><input type="password" id="worker-password" required minlength="6" placeholder="Min 6 chars"></div>
+            <button type="submit" class="btn-primary">Create Worker</button>
+            <p id="worker-form-status" class="form-status"></p>
+          </form>
+        </article>
+      </section>
+
+      <!-- Leaderboards -->
+      <section class="dashboard-section content-grid-equal">
+        <article class="card">
+          <div class="card-header"><h3>🏆 Top Workers</h3></div>
+          <div class="table-wrapper">
+            <table class="table-shell">
+              <thead><tr><th>Name</th><th>Pickups</th></tr></thead>
+              <tbody id="admin-top-workers-body"><tr><td colspan="2">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-header"><h3>🌟 Top Citizens</h3></div>
+          <div class="table-wrapper">
+            <table class="table-shell">
+              <thead><tr><th>Name</th><th>Points</th></tr></thead>
+              <tbody id="admin-top-users-body"><tr><td colspan="2">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="request-detail-modal">
+    <div class="modal-content" style="position:relative">
+      <button class="modal-close" id="close-detail-modal">×</button>
+      <h3>Request Details</h3>
+      <div id="request-detail-body">Loading...</div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/shared-utils.js"></script>
+  <script src="/dashboard-script.js"></script>
+</body>
+</html>

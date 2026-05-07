@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoPickup® | Smart Waste Management for Cleaner Cities</title>
+    <meta
+      name="description"
+      content="EcoPickup helps residents book waste pickups, report garbage spots, and support a cleaner city through smart, sustainable waste management."
+    />
+
+    <!-- Fonts: Instrument Serif (display) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./hero.css" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+  <body>
+    <!-- ═══════════════════════════════════════════════════════════════════
+         CINEMATIC HERO CONTAINER
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div class="cinematic-container" id="cinematic-hero">
+
+      <!-- ── Video Background Layer (z-0) ── -->
+      <div class="video-layer">
+        <video
+          id="hero-video"
+          class="hero-video"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4"
+          muted
+          playsinline
+          preload="auto"
+          aria-hidden="true"
+        ></video>
+        <!-- Gradient overlays on video -->
+        <div class="video-gradient-overlay"></div>
+      </div>
+
+      <!-- ── Navigation Bar (z-10) ── -->
+      <header class="cinematic-header" id="cinematic-header">
+        <nav class="cinematic-nav">
+          <a class="cinematic-logo" href="/" aria-label="EcoPickup home">
+            EcoPickup<sup>®</sup>
+          </a>
+
+          <button
+            class="cinematic-nav-toggle"
+            id="cinematic-nav-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="cinematic-nav-menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="cinematic-nav-menu" id="cinematic-nav-menu">
+            <a href="/" class="cinematic-nav-link active">Home</a>
+            <a href="/services.html" class="cinematic-nav-link">Services</a>
+            <a href="/about.html" class="cinematic-nav-link">About</a>
+            <a href="/#track" class="cinematic-nav-link">Track</a>
+            <a href="./login.html" class="cinematic-nav-link">Login</a>
+            <a href="./login.html#signup-form" class="cinematic-cta-btn">Begin Journey</a>
+          </div>
+        </nav>
+      </header>
+
+      <!-- ── Hero Content (z-10) ── -->
+      <section class="cinematic-hero" id="home">
+        <div class="cinematic-hero-inner">
+          <h1 class="cinematic-headline animate-fade-rise">
+            Beyond waste, we build <em>cleaner</em> cities for <em>the future.</em>
+          </h1>
+
+          <p class="cinematic-description animate-fade-rise-delay">
+            Building platforms for responsible citizens, fearless eco-warriors, and thoughtful communities. Through the noise, we craft digital solutions for smart waste collection and pure sustainability.
+          </p>
+
+          <a href="./login.html#signup-form" class="cinematic-hero-cta animate-fade-rise-delay-2">
+            Begin Journey
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         EXISTING SECTIONS (preserved from original)
+         ═══════════════════════════════════════════════════════════════════ -->
+
+
+
+    <main>
+      <!-- Inspiring Mission Cards Section -->
+      <section class="section video-section" style="background: var(--surface-soft); padding: 80px 0; text-align: center;">
+        <div class="container">
+          <div class="section-heading reveal" style="max-width: 800px; margin: 0 auto 40px;">
+            <p class="section-tag" style="color: var(--primary); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Our Mission</p>
+            <h2 style="font-size: 2.5rem; margin-top: 10px; color: var(--text);">See the Impact of Recycling</h2>
+            <p style="color: var(--text-muted); margin-top: 15px; font-size: 1.1rem;">Every small action contributes to a greener planet. Explore how communities are transforming waste into a sustainable future.</p>
+          </div>
+          
+          <div class="mission-cards-container reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; text-align: left;">
+            <div class="mission-card" style="background: var(--surface); padding: 15px; border-radius: 24px; box-shadow: var(--shadow-sm); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; cursor: pointer; border: 1px solid transparent;">
+              <div style="overflow: hidden; border-radius: 16px;">
+                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=600&q=80" alt="Recycling Bin" style="width: 100%; height: 220px; object-fit: cover; transition: transform 0.6s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <h3 style="margin: 20px 0 10px; color: var(--text); font-size: 1.5rem;">Smart Sorting</h3>
+              <p style="color: var(--text-muted);">Implement intelligent waste separation at the source for maximum recycling efficiency.</p>
+            </div>
+            
+            <div class="mission-card" style="background: var(--surface); padding: 15px; border-radius: 24px; box-shadow: var(--shadow-sm); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; cursor: pointer; border: 1px solid transparent;">
+              <div style="overflow: hidden; border-radius: 16px;">
+                <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&fit=crop&w=600&q=80" alt="Clean City" style="width: 100%; height: 220px; object-fit: cover; transition: transform 0.6s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <h3 style="margin: 20px 0 10px; color: var(--text); font-size: 1.5rem;">Clean Streets</h3>
+              <p style="color: var(--text-muted);">Empowering communities to maintain spotless neighborhoods through quick reporting.</p>
+            </div>
+
+            <div class="mission-card" style="background: var(--surface); padding: 15px; border-radius: 24px; box-shadow: var(--shadow-sm); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; cursor: pointer; border: 1px solid transparent;">
+              <div style="overflow: hidden; border-radius: 16px;">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Green Energy" style="width: 100%; height: 220px; object-fit: cover; transition: transform 0.6s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <h3 style="margin: 20px 0 10px; color: var(--text); font-size: 1.5rem;">Sustainable Future</h3>
+              <p style="color: var(--text-muted);">Converting processed waste into renewable resources for a circular economy.</p>
+            </div>
+          </div>
+
+          <style>
+            .mission-card:hover {
+              transform: translateY(-15px) !important;
+              box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.25) !important;
+              border: 1px solid rgba(16, 185, 129, 0.3) !important;
+            }
+          </style>
+        </div>
+      </section>
+
+      <section class="section services-section" id="services">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-tag">Quick services</p>
+            <h2>Everything needed for smart city waste operations</h2>
+          </div>
+          <div class="card-grid service-grid">
+            <style>
+              .animated-icon {
+                animation: icon-bounce 2s infinite ease-in-out;
+                background: var(--primary);
+                color: white;
+                box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+              }
+              @keyframes icon-bounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-8px); }
+              }
+            </style>
+            <article class="info-card reveal" style="text-align: center;">
+              <div class="card-icon animated-icon">01</div>
+              <h3>Home Waste Pickup</h3>
+              <p>Schedule doorstep collection for regular household waste.</p>
+            </article>
+            <article class="info-card reveal" style="text-align: center;">
+              <div class="card-icon animated-icon">02</div>
+              <h3>Report Garbage Location</h3>
+              <p>Raise alerts for open dumping spots and unattended garbage.</p>
+            </article>
+            <article class="info-card reveal" style="text-align: center;">
+              <div class="card-icon animated-icon">03</div>
+              <h3>Recycling Program</h3>
+              <p>Join recycling drives and support responsible waste sorting.</p>
+            </article>
+            <article class="info-card reveal" id="track" style="text-align: center;">
+              <div class="card-icon animated-icon">04</div>
+              <h3>Track Pickup Status</h3>
+              <p>Follow your request progress from booking to completion.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted-section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-tag">How it works</p>
+            <h2>Three easy steps to keep your area clean</h2>
+          </div>
+          <div class="steps-grid">
+            <article class="step-card reveal">
+              <span class="step-number">Step 1</span>
+              <h3>Submit Request</h3>
+              <p>Choose the service and provide your waste pickup details.</p>
+            </article>
+            <article class="step-card reveal">
+              <span class="step-number">Step 2</span>
+              <h3>Team Assigns Worker</h3>
+              <p>Our system routes the task to the nearest available worker.</p>
+            </article>
+            <article class="step-card reveal">
+              <span class="step-number">Step 3</span>
+              <h3>Pickup Completed</h3>
+              <p>The waste is collected and your request status gets updated.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container split-layout">
+          <div class="section-heading reveal">
+            <p class="section-tag">Benefits</p>
+            <h2>Built for cleaner communities and easier daily use</h2>
+            <p class="section-copy">
+              EcoPickup supports a modern waste collection workflow with simple
+              tools that stay ready for future Node.js, Express.js, and MongoDB
+              integration.
+            </p>
+          </div>
+          <div class="benefits-grid">
+            <article class="benefit-card reveal">
+              <h3>Fast Pickup</h3>
+              <p>Reduce waiting time with organized collection requests.</p>
+            </article>
+            <article class="benefit-card reveal">
+              <h3>Clean Environment</h3>
+              <p>Support a healthier neighborhood through better waste control.</p>
+            </article>
+            <article class="benefit-card reveal">
+              <h3>Easy Tracking</h3>
+              <p>Know exactly where your request stands anytime.</p>
+            </article>
+            <article class="benefit-card reveal">
+              <h3>Reward Points</h3>
+              <p>Earn recycling points for responsible disposal habits.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section counter-section">
+        <div class="container">
+          <div class="counter-grid">
+            <article class="counter-card reveal">
+              <h3 class="counter" data-target="2450">0</h3>
+              <p>Total Pickups</p>
+            </article>
+            <article class="counter-card reveal">
+              <h3 class="counter" data-target="1800">0</h3>
+              <p>Users Registered</p>
+            </article>
+            <article class="counter-card reveal">
+              <h3 class="counter" data-target="12750">0</h3>
+              <p>Kg Waste Recycled</p>
+            </article>
+            <article class="counter-card reveal">
+              <h3 class="counter" data-target="84">0</h3>
+              <p>Areas Cleaned</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-tag">Testimonials</p>
+            <h2>Trusted by residents and local communities</h2>
+          </div>
+          <div class="card-grid testimonial-grid">
+            <article class="testimonial-card reveal">
+              <p>
+                "The pickup process feels simple now. I can raise a request and
+                track it without confusion."
+              </p>
+              <h3>Riya Sharma</h3>
+              <span>Resident</span>
+            </article>
+            <article class="testimonial-card reveal">
+              <p>
+                "Reporting garbage spots became much faster, and the dashboard
+                style feels clean and professional."
+              </p>
+              <h3>Arjun Mehta</h3>
+              <span>Community Volunteer</span>
+            </article>
+            <article class="testimonial-card reveal">
+              <p>
+                "The rewards idea encourages people to recycle more often. It is
+                a great addition for awareness."
+              </p>
+              <h3>Neha Verma</h3>
+              <span>Recycling Member</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-banner reveal">
+            <div>
+              <p class="section-tag">Clean city mission</p>
+              <h2>Join the Clean City Mission Today</h2>
+            </div>
+            <a class="primary-button" href="./login.html">Get Started</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="logo footer-logo" href="/">
+            <span class="logo-mark">E</span>
+            <span>EcoPickup</span>
+          </a>
+          <p>
+            A syllabus-friendly waste management homepage ready for future
+            backend integration using Node.js, Express.js, and MongoDB.
+          </p>
+        </div>
+
+        <div>
+          <h3>Contact Info</h3>
+          <p>Email: support@ecopickup.com</p>
+          <p>Phone: +91 98765 43210</p>
+          <p>Address: Green Avenue, Clean City Zone</p>
+        </div>
+
+        <div>
+          <h3>Quick Links</h3>
+          <a href="/services.html">Services</a>
+          <a href="/#track">Track Request</a>
+          <a href="/about.html">About</a>
+        </div>
+
+        <div>
+          <h3>Newsletter</h3>
+          <form class="newsletter-form" id="newsletter-form">
+            <label class="sr-only" for="newsletter-email">Email address</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+          <div class="newsletter-message" id="newsletter-message" aria-live="polite"></div>
+          <div class="social-links" aria-label="Social links">
+            <a href="#" aria-label="Facebook">Fb</a>
+            <a href="#" aria-label="Instagram">In</a>
+            <a href="#" aria-label="Twitter">Tw</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="./script.js"></script>
+    <script src="./hero-video.js"></script>
+    <script>
+      // Dark Mode Toggle Logic
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (themeToggleBtn) themeToggleBtn.innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+      }
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          let theme = document.documentElement.getAttribute('data-theme');
+          if (theme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            themeToggleBtn.innerText = '🌙';
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeToggleBtn.innerText = '☀️';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

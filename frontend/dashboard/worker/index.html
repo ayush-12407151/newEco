@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worker Dashboard | EcoPickup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dashboard.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  </head>
+  <body data-role="worker">
+    <div class="dashboard-shell">
+      <header class="dashboard-navbar">
+        <a class="dashboard-brand" href="/" aria-label="EcoPickup home">
+          <span class="dashboard-brand-mark">E</span>
+          <div>
+            <strong>EcoPickup</strong>
+            <div class="dashboard-role-badge">Worker Dashboard</div>
+          </div>
+        </a>
+
+        <nav class="dashboard-nav" aria-label="Worker navigation">
+          <a class="active" href="#tasks">My Tasks</a>
+          <a href="#map">Map</a>
+          <a href="#history">History</a>
+          <a href="#performance">Performance</a>
+          <button class="dashboard-logout" id="dashboard-logout" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <main class="dashboard-main">
+        <header class="dashboard-topbar" id="tasks">
+          <div class="topbar-copy">
+            <p>Worker operations</p>
+            <h1>Today's worker dashboard</h1>
+          </div>
+          <div class="topbar-meta">
+            <div class="topbar-date">
+              <span>Today</span>
+              <strong id="dashboard-date"></strong>
+            </div>
+            <div class="topbar-user">
+              <span id="dashboard-user-role"></span>
+              <strong id="dashboard-user-name"></strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="dashboard-section metrics-grid">
+          <article class="card metric-card">
+            <small>Assigned Tasks</small>
+            <strong id="worker-metric-assigned">0</strong>
+            <p>Pickup and cleanup tasks allocated under My Tasks.</p>
+            <div class="metric-bar"><span id="worker-metric-assigned-bar" style="width: 0%"></span></div>
+          </article>
+          <article class="card metric-card">
+            <small>Completed Today</small>
+            <strong id="worker-metric-completed">0</strong>
+            <p>Requests already finished and confirmed during this shift.</p>
+            <div class="metric-bar"><span id="worker-metric-completed-bar" style="width: 0%"></span></div>
+          </article>
+          <article class="card metric-card">
+            <small>Performance Score</small>
+            <strong id="worker-metric-performance">0%</strong>
+            <p>Optimized travel and service completion score.</p>
+            <div class="metric-bar"><span id="worker-metric-performance-bar" style="width: 0%"></span></div>
+          </article>
+          <article class="card metric-card">
+            <small>Notifications</small>
+            <strong id="worker-metric-notifications">0</strong>
+            <p>Unread shift alerts and supervisor updates.</p>
+            <div class="metric-bar"><span style="width: 0%"></span></div>
+          </article>
+        </section>
+
+        <section class="dashboard-section content-grid">
+          <article class="card" id="tasks">
+            <div class="section-heading">
+              <div>
+                <h2>My Tasks</h2>
+                <p>Stops arranged in delivery order for the shift.</p>
+              </div>
+            </div>
+            <table class="table-shell">
+              <thead>
+                <tr>
+                  <th>Stop</th>
+                  <th>Area</th>
+                  <th>Task</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="worker-requests-table-body">
+                <tr>
+                  <td colspan="5">Loading tasks...</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="card" id="map">
+            <div class="section-heading">
+              <div>
+                <h2>Live Routing Map</h2>
+                <p>Location of your currently active task.</p>
+              </div>
+            </div>
+            <div id="worker-map" style="height: 300px; border-radius: 12px; margin-top: 16px; background-color: var(--dash-surface-hover); border: 1px solid var(--dash-border);"></div>
+            <p id="map-status" style="margin-top: 8px; font-size: 14px; color: var(--dash-muted);">Select a task to view its location.</p>
+          </article>
+        </section>
+
+        <section class="dashboard-section analytics-grid">
+          <article class="card full-section" id="leaderboard">
+            <span class="card-eyebrow">Performance</span>
+            <h3>Top Worker Leaderboard</h3>
+            <table class="table-shell" style="margin-top: 16px;">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Worker Name</th>
+                  <th>Completed Pickups</th>
+                </tr>
+              </thead>
+              <tbody id="worker-leaderboard-body">
+                <tr><td colspan="3">Loading leaderboard...</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </section>
+
+        <section class="dashboard-section analytics-grid">
+          <article class="card" id="notifications">
+            <span class="card-eyebrow">Notifications</span>
+            <h3>Latest alerts</h3>
+            <div class="activity-list">
+              <article>
+                <strong>Supervisor message</strong>
+                <p>Bulk waste pickup at Sector 11 has been marked high priority.</p>
+              </article>
+              <article>
+                <strong>Vehicle note</strong>
+                <p>Truck inspection passed. Tire pressure was rechecked at the depot.</p>
+              </article>
+              <article>
+                <strong>Resident response</strong>
+                <p>Two residents shared positive feedback on early collection timing.</p>
+              </article>
+            </div>
+          </article>
+          <article class="card" id="profile">
+            <span class="card-eyebrow">Profile</span>
+            <h3>Worker profile</h3>
+            <div class="mini-stat-list">
+              <article>
+                <strong>Name</strong>
+                <p id="dashboard-profile-name">Assigned field worker</p>
+              </article>
+              <article>
+                <strong>Role</strong>
+                <p id="dashboard-profile-role">worker account</p>
+              </article>
+              <article>
+                <strong>Shift</strong>
+                <p>Morning dispatch, Zone B, 8:00 AM to 5:00 PM.</p>
+              </article>
+              <article>
+                <strong>Contact status</strong>
+                <p>Available for new assignments and escalation updates.</p>
+              </article>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/dashboard-script.js"></script>
+  </body>
+</html>

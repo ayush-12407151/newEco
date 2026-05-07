@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Users | EcoPickup Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/dashboard.css" />
+</head>
+<body data-role="admin" data-page="admin-users" data-layout="sidebar">
+  <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <a class="sidebar-brand" href="/"><span class="sidebar-brand-mark">E</span><div><strong>EcoPickup</strong><div class="sidebar-role-badge">Admin</div></div></a>
+      <nav class="sidebar-nav">
+        <a href="/dashboard/admin/"><span class="nav-icon">📊</span> Dashboard</a>
+        <a href="/admin/requests/"><span class="nav-icon">📋</span> Requests</a>
+        <a href="/admin/workers/"><span class="nav-icon">👷</span> Workers</a>
+        <a href="/admin/users/" class="active"><span class="nav-icon">👥</span> Users</a>
+        <div class="sidebar-divider"></div>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="dark-mode-toggle" id="dark-mode-toggle"><span class="nav-icon" id="dark-mode-icon">🌙</span><span id="dark-mode-label">Dark Mode</span></button>
+        <button class="dark-mode-toggle" id="dashboard-logout"><span class="nav-icon">🚪</span> Logout</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <div class="breadcrumbs"><a href="/dashboard/admin/">Admin</a><span class="sep">›</span><span>Users</span></div>
+      <header class="dashboard-topbar">
+        <div class="topbar-copy"><p>Citizen management</p><h1>Users</h1></div>
+        <div class="topbar-meta">
+          <div class="topbar-chip"><span id="dashboard-user-role">admin</span><strong id="dashboard-date"></strong></div>
+          <div class="topbar-chip"><strong id="dashboard-user-name">Admin</strong></div>
+        </div>
+      </header>
+
+      <section class="dashboard-section">
+        <article class="card">
+          <div class="card-header"><h3>All Citizens</h3></div>
+          <div class="filter-bar">
+            <input type="search" id="user-search" placeholder="🔍 Search users..." />
+          </div>
+          <div class="table-wrapper">
+            <table class="table-shell">
+              <thead><tr><th>Name</th><th>Email</th><th>Points</th><th>Requests</th><th>Joined</th><th>Actions</th></tr></thead>
+              <tbody id="users-table-body"><tr><td colspan="6">Loading...</td></tr></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="users-pagination"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/shared-utils.js"></script>
+  <script src="/admin-pages.js"></script>
+</body>
+</html>

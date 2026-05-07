@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard | EcoPickup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../dashboard.css" />
+  </head>
+  <body data-role="user">
+    <div class="dashboard-shell">
+      <header class="dashboard-navbar">
+        <a class="dashboard-brand" href="../../index.html" aria-label="EcoPickup home">
+          <span class="dashboard-brand-mark">E</span>
+          <div>
+            <strong>EcoPickup</strong>
+            <div class="dashboard-role-badge">User Dashboard</div>
+          </div>
+        </a>
+
+        <nav class="dashboard-nav" aria-label="User navigation">
+          <a href="../../requests/new/index.html">New Request</a>
+          <a href="../../requests/my/index.html">My Requests</a>
+          <button class="dashboard-logout" id="dashboard-logout" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <main class="dashboard-main">
+        <header class="dashboard-topbar" id="dashboard">
+          <div class="topbar-copy">
+            <p>Resident overview</p>
+            <h1>Your clean city dashboard</h1>
+          </div>
+          <div class="topbar-meta">
+            <div class="topbar-date">
+              <span>Today</span>
+              <strong id="dashboard-date"></strong>
+            </div>
+            <div class="topbar-user">
+              <span id="dashboard-user-role"></span>
+              <strong id="dashboard-user-name"></strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="dashboard-section metrics-grid">
+          <article class="card metric-card">
+            <small>Open Requests</small>
+            <strong id="open-requests-count">0</strong>
+            <p>Pickup or issue reports currently being processed.</p>
+            <div class="metric-bar"><span style="width: 44%"></span></div>
+          </article>
+          <article class="card metric-card">
+            <small>Completed Pickups</small>
+            <strong id="completed-requests-count">0</strong>
+            <p>Successful waste collections completed for your account.</p>
+            <div class="metric-bar"><span style="width: 78%"></span></div>
+          </article>
+          <article class="card metric-card">
+            <small>Reward Points</small>
+            <strong id="reward-points-count">0</strong>
+            <p>Points earned through recycling and timely reporting.</p>
+            <div class="metric-bar"><span style="width: 63%"></span></div>
+          </article>
+          <article class="card metric-card">
+            <small>Area Cleanliness</small>
+            <strong id="area-cleanliness-status">New</strong>
+            <p>Your neighborhood cleanup score remains strong this week.</p>
+            <div class="metric-bar"><span style="width: 84%"></span></div>
+          </article>
+        </section>
+
+        <!-- New Horizontal Section for Actions -->
+        <section class="dashboard-section content-grid-3">
+          <article class="card" id="new-request">
+            <div class="section-heading">
+              <div>
+                <h2>Create New Request</h2>
+              </div>
+            </div>
+            <div class="status-list" style="margin-bottom: 16px;">
+              <article>
+                <strong>Submit Pickup</strong>
+                <span>Create a new pickup or garbage report.</span>
+              </article>
+            </div>
+            <a class="dashboard-submit-button" href="../../requests/new/index.html" style="width: 100%;">Create Request</a>
+          </article>
+
+          <article class="card" id="schedule">
+            <div class="section-heading">
+              <div>
+                <h2>Pickup Schedule</h2>
+              </div>
+            </div>
+            <div class="status-list">
+              <article>
+                <strong>General waste</strong>
+                <span>Tuesday and Friday, 5:00 PM - 7:00 PM.</span>
+              </article>
+              <article>
+                <strong>Dry recyclables</strong>
+                <span>Saturday morning collection.</span>
+              </article>
+            </div>
+          </article>
+
+          <article class="card" id="requests">
+            <div class="section-heading">
+              <div>
+                <h2>My Requests</h2>
+              </div>
+            </div>
+            <div class="status-list" style="margin-bottom: 16px;">
+              <article>
+                <strong>Track Status</strong>
+                <span>View history and track active requests.</span>
+              </article>
+            </div>
+            <a class="dashboard-secondary-button" href="../../requests/my/index.html" style="width: 100%;">View History</a>
+          </article>
+        </section>
+
+        <section class="dashboard-section analytics-grid">
+          <!-- Full Width Rewards Section -->
+          <article class="card full-section" id="rewards">
+            <span class="card-eyebrow">Rewards Program</span>
+            <h3>Monthly points growth</h3>
+            <div class="chart-bars">
+              <article><span style="height: 34%"></span><small>Jan</small></article>
+              <article><span style="height: 48%"></span><small>Feb</small></article>
+              <article><span style="height: 66%"></span><small>Mar</small></article>
+              <article><span style="height: 82%"></span><small>Apr</small></article>
+            </div>
+          </article>
+
+          <article class="card full-section" id="activity">
+            <span class="card-eyebrow">Recent Activity</span>
+            <h3>Your recent requests</h3>
+            <table class="table-shell" style="margin-top: 16px;">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="user-recent-activity-body">
+                <tr><td colspan="3">Loading...</td></tr>
+              </tbody>
+            </table>
+          </article>
+          <article class="card full-section" id="leaderboard">
+            <span class="card-eyebrow">Community</span>
+            <h3>Top Eco-Citizens</h3>
+            <table class="table-shell" style="margin-top: 16px;">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Citizen Name</th>
+                  <th>Eco Points</th>
+                </tr>
+              </thead>
+              <tbody id="user-leaderboard-body">
+                <tr><td colspan="3">Loading leaderboard...</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="../../shared-utils.js"></script>
+    <script src="../../dashboard-script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waste Management Auth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero-panel">
+        <p class="eyebrow">City Cleanup Portal</p>
+        <h1>Log in to manage waste pickup requests faster.</h1>
+        <p class="hero-copy">
+          Track requests, monitor points, and keep neighborhood cleanup moving
+          from one simple dashboard.
+        </p>
+        <div class="hero-card">
+          <span>What you can do</span>
+          <ul>
+            <li>Submit and follow waste pickup requests</li>
+            <li>Check request status without calling support</li>
+            <li>Manage your account and community points</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="auth-panel">
+        <div class="role-switcher" aria-label="Choose account type">
+          <p class="role-switcher-label">Continue as</p>
+          <div class="role-options" role="tablist" aria-label="Account type">
+            <button class="role-button active" data-role="user" type="button">
+              User
+            </button>
+            <button class="role-button" data-role="worker" type="button">
+              Worker
+            </button>
+            <button class="role-button" data-role="admin" type="button">
+              Admin
+            </button>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Authentication Forms">
+          <button class="tab-button active" data-tab="login" type="button">
+            Login
+          </button>
+          <button class="tab-button" data-tab="signup" type="button">
+            Sign Up
+          </button>
+        </div>
+
+        <form id="login-form" class="auth-form active" autocomplete="on">
+          <h2 id="login-title">User login</h2>
+          <p id="login-copy">Use your registered email to continue.</p>
+
+          <input id="login-role" name="role" type="hidden" value="user" />
+
+          <label for="login-email">Email</label>
+          <input id="login-email" name="email" type="email" required />
+
+          <label for="login-password">Password</label>
+          <input
+            id="login-password"
+            name="password"
+            type="password"
+            required
+          />
+
+          <button class="submit-button" type="submit">Log In</button>
+        </form>
+
+        <form id="signup-form" class="auth-form" autocomplete="on">
+          <h2 id="signup-title">Create user account</h2>
+          <p id="signup-copy">Register once to start submitting pickup requests.</p>
+          <p class="signup-note">Public signup only creates user accounts. Worker and admin accounts must be created separately.</p>
+
+          <label for="signup-name">Full name</label>
+          <input id="signup-name" name="name" type="text" required />
+
+          <label for="signup-email">Email</label>
+          <input id="signup-email" name="email" type="email" required />
+
+          <label for="signup-password">Password</label>
+          <input
+            id="signup-password"
+            name="password"
+            type="password"
+            minlength="6"
+            required
+          />
+
+          <button class="submit-button" type="submit">Create Account</button>
+        </form>
+
+        <div id="status-message" class="status-message" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="./auth-script.js"></script>
+  </body>
+</html>

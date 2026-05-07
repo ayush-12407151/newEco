@@ -1,0 +1,25 @@
+[33m0e113be[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m feat: show assigned worker name on admin dashboard and fix worker tasks endpoint
+[33m201996b[m fix: resolve worker assignment timeout issue
+[33mffca08e[m fix: correctly parse worker tasks response array
+[33m38f62fa[m feat: overhaul admin dashboard - sidebar, pagination, filters, toast notifications, delete actions
+[33mc918953[m Refactor README.md for clarity and formatting
+[33mb647a8f[m Revise README with new setup instructions
+[33m4fb3868[m Revise README for EcoPickup project
+[33m61842a1[m fix: create WorkerProfile when admin adds a new worker
+[33m7460aea[m fix: update WorkerProfile currentTaskCount on assignment and completion
+[33m61235e7[m feat: segregate worker database profile and redesign landing page navigation
+[33mfd39c15[m fix: updated email verification link to point to production
+[33meb38b9e[m feat: implement worker dashboard, user dashboard fixes, leaderboards, and rating system
+[33m941d480[m Fixed bug in admin signup
+[33ma2f0aa2[m Fixed bug in admin signup
+[33md7ced6b[m Fixed Bug
+[33me38657f[m Fixed Bug
+[33m073a176[m Enable Cors
+[33m007a12e[m Deployed and connected
+[33m2cb871e[m Fixed bug and updated UI
+[33m4b5ee4c[m Home Page
+[33m935ef3b[m Created 3 authenticated api for requests
+[33m0733a35[m Add login page and auth backend setup
+[33m3f3e551[m Create registration route
+[33m5417217[m Added frontend folder
+[33mc907aa2[m Initial backend setup
